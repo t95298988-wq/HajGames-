@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HajGames | بازی‌های من</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#0b1020;color:#f5f7ff}
+header{padding:22px 6%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #252d48;position:sticky;top:0;background:#0b1020ee;backdrop-filter:blur(10px);z-index:5}
+.logo{font-size:25px;font-weight:900;color:#7c5cff}.nav{display:flex;gap:20px}.nav a{color:#b9c1d9;text-decoration:none}
+.hero{padding:80px 6%;background:radial-gradient(circle at 80% 20%,#4d35a855,transparent 35%),linear-gradient(135deg,#111932,#0b1020)}
+.hero h1{font-size:clamp(42px,7vw,76px);margin:0 0 15px}.hero p{color:#b9c1d9;font-size:18px;max-width:650px;line-height:1.9}
+.btn{display:inline-block;background:#7c5cff;color:white;padding:13px 22px;border-radius:12px;text-decoration:none;font-weight:bold;margin-top:10px}
+section{padding:55px 6%}.tools{display:flex;gap:12px;flex-wrap:wrap;margin:20px 0 30px}
+input,select{background:#121a30;border:1px solid #2b3657;color:white;padding:13px;border-radius:10px;outline:none}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:#121a30;border:1px solid #26304c;border-radius:18px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-5px);border-color:#7c5cff}
+.cover{height:145px;background:linear-gradient(135deg,#7c5cff,#1bc6a4);display:grid;place-items:center;font-size:42px}
+.card .body{padding:17px}.tag{font-size:12px;color:#9ea9c6}.card h3{margin:8px 0}.card p{color:#aeb7cf;font-size:14px;line-height:1.7}
+.play{display:block;text-align:center;background:#222d4c;color:#fff;text-decoration:none;padding:10px;border-radius:9px;margin-top:13px}
+.empty{display:none;color:#aeb7cf;text-align:center;padding:35px}footer{border-top:1px solid #252d48;padding:30px 6%;color:#7f8aa7;text-align:center}
+</style></head>
+<body>
+<header><div class="logo">🎮 HajGames</div><nav class="nav"><a href="#games">بازی‌ها</a><a href="#about">درباره</a></nav></header>
+<div class="hero"><h1>HajGames</h1><p>خانه‌ی بازی‌های من؛ جایی برای معرفی و انتشار بازی‌هایی که ساخته‌ام.</p><a class="btn" href="#games">مشاهده بازی‌ها</a></div>
+<section id="games"><h2>🎮 بازی‌ها</h2>
+<div class="tools"><input id="search" placeholder="جستجوی بازی..."><select id="category"><option value="all">همه دسته‌ها</option><option>اکشن</option><option>ماجراجویی</option><option>پازل</option></select></div>
+<div class="grid" id="grid">
+<article class="card" data-name="Haj Adventure" data-cat="ماجراجویی"><div class="cover">🗺️</div><div class="body"><span class="tag">ماجراجویی</span><h3>Haj Adventure</h3><p>یک بازی نمونه برای نمایش قالب سایت.</p><a class="play" href="#">مشاهده بازی</a></div></article>
+<article class="card" data-name="Haj Space" data-cat="اکشن"><div class="cover">🚀</div><div class="body"><span class="tag">اکشن</span><h3>Haj Space</h3><p>نبرد فضایی؛ آماده‌ی جایگزینی با بازی خودت.</p><a class="play" href="#">مشاهده بازی</a></div></article>
+<article class="card" data-name="Haj Puzzle" data-cat="پازل"><div class="cover">🧩</div><div class="body"><span class="tag">پازل</span><h3>Haj Puzzle</h3><p>نمونه‌ای برای بازی‌های فکری.</p><a class="play" href="#">مشاهده بازی</a></div></article>
+</div><div class="empty" id="empty">بازی‌ای پیدا نشد.</div></section>
+<section id="about"><h2>درباره HajGames</h2><p style="color:#aeb7cf;line-height:2">این سایت برای نمایش و انتشار بازی‌های ساخته‌شده توسط Haj ساخته شده است.</p></section>
+<footer>© 2026 HajGames — همه حقوق محفوظ است.</footer>
+<script>
+const search=document.querySelector('#search'),cat=document.querySelector('#category'),cards=[...document.querySelectorAll('.card')],empty=document.querySelector('#empty');
+function filter(){let q=search.value.trim().toLowerCase(),c=cat.value,n=0;cards.forEach(x=>{let ok=(!q||x.dataset.name.toLowerCase().includes(q))&&(c==='all'||x.dataset.cat===c);x.style.display=ok?'block':'none';if(ok)n++});empty.style.display=n?'none':'block'}
+search.oninput=filter;cat.onchange=filter;
+</script></body></html>
